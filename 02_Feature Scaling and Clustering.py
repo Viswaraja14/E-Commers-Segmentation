@@ -13,3 +13,20 @@ X = df[selected_features].copy()
 # standaradize the features
 scaler=StandardScaler()
 X_scaled=scaler.fit_transform(X)
+
+# Finding the Optimal Number of Clusters using the Elbow Method
+inertia = []
+K_range = range(1, 11)
+
+for k in K_range:
+    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+    kmeans.fit(X_scaled)
+    inertia.append(kmeans.inertia_)
+
+plt.plot(K_range, inertia, marker='o')
+plt.xlabel('Number of Clusters (K)')
+plt.ylabel('Inertia')
+plt.title('Elbow Method For Optimal K')
+plt.show()
+
+
