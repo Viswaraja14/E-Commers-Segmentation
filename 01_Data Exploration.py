@@ -15,3 +15,9 @@ df.info()
 
 #to see the summary statistics of the dataset
 df.describe()
+
+# Check null counts in selected X Features
+print(X.isnull().sum())
+
+# Duplicates Data Check
+df.duplicated().sum()
